@@ -167,6 +167,13 @@
 #define bswap_64(x) bswap64(x)
 #endif
 
+#elif defined(__HAIKU__)
+
+#undef bswap_32
+#undef bswap_64
+#define bswap_32 __builtin_bswap32
+#define bswap_64 __builtin_bswap64
+
 #else
 
 #undef bswap_32

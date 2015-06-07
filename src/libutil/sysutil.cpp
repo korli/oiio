@@ -54,6 +54,12 @@
 #    include <unistd.h>
 #endif
 
+#if defined (__HAIKU__)
+# include <sys/types.h>
+# include <sys/resource.h>
+# include <unistd.h>
+#endif
+
 #include <OpenImageIO/dassert.h>
 #include <OpenImageIO/strutil.h>
 #include <OpenImageIO/sysutil.h>
@@ -250,7 +256,7 @@ Sysutil::this_program_path()
     size_t cb = sizeof(filename);
     int r     = 1;
     sysctl(mib, 4, filename, &cb, NULL, 0);
-#elif defined(__GNU__) || defined(__OpenBSD__) || defined(_WIN32)
+#elif defined(__GNU__) || defined(__OpenBSD__) || defined(_WIN32) || defined(__HAIKU__)
     int r = 0;
 #else
     // No idea what platform this is

@@ -163,6 +163,9 @@ if (MINGW)
     target_link_libraries (OpenImageIO PRIVATE ws2_32)
 endif()
 
+if (HAIKU)
+    target_link_libraries (OpenImageIO network)
+endif ()
 
 
 if (MSVC)

@@ -46,6 +46,14 @@ ifeq (${platform},unknown)
     endif
   endif
 
+  # Haiku
+  ifeq (${uname},haiku)
+    platform := haiku
+    ifeq (${hw},x86_64)
+      platform := haiku64
+    endif
+ endif
+
   # Windows
   ifeq (${uname},cygwin)
     platform := windows
